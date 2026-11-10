@@ -1,0 +1,46 @@
+/* ==========================================================
+   plan.css - Pantalla del plan de acción (lista de problemas)
+   ========================================================== */
+
+/* Títulos compartidos por las pantallas de plan y tutorial */
+.titulo-pantalla{font-size:clamp(1.3rem,5vw,1.6rem);line-height:1.25;font-weight:700;margin-bottom:6px}
+.sub{color:var(--suave);font-size:.92rem;line-height:1.55;margin-bottom:18px}
+
+/* Riesgo actual (baja al completar pasos) */
+.mini-riesgo{padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--c);margin-bottom:18px;transition:border-color .5s}
+.mini-fila{display:flex;justify-content:space-between;align-items:baseline;font-size:.88rem;color:var(--suave);margin-bottom:10px}
+.mini-fila b{color:var(--c);font-size:1.45rem;transition:color .5s}
+.medidor{height:8px;border-radius:5px;background:rgba(255,255,255,.1);overflow:hidden}
+.medidor i{display:block;height:100%;width:0;border-radius:5px;background:var(--c);box-shadow:0 0 10px var(--c);transition:width .7s ease,background .5s ease}
+
+/* Lista de problemas: una tarjeta limpia por problema */
+.lista{list-style:none;padding:0;display:grid;gap:12px;margin-bottom:16px}
+.problema{padding:14px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--borde);transition:all .4s ease}
+.problema-fila{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.p-ico{font-size:1.4rem;flex:none;line-height:1}
+.p-texto{flex:1 1 150px;min-width:0;line-height:1.45;font-weight:500;font-size:.95rem}
+.btn-mini{flex:none;padding:11px 16px;border-radius:12px;cursor:pointer;font:600 .9rem var(--fuente);color:#03140c;
+  background:linear-gradient(135deg,var(--neon),var(--neon-osc));border:0;transition:all .3s ease}
+.btn-mini:hover{box-shadow:0 0 22px rgba(37,211,102,.55);filter:brightness(1.1)}
+.btn-mini:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+.chip-ok{flex:none;padding:6px 12px;border-radius:20px;font-size:.78rem;font-weight:700;color:var(--neon);background:rgba(37,211,102,.15)}
+.problema.resuelto{border-color:rgba(37,211,102,.5);background:rgba(37,211,102,.06)}
+.problema.resuelto .p-texto{opacity:.65;text-decoration:line-through}
+
+/* Lista pequeña de operadores (aparece al pulsar "Solucionar ahora" en el PIN) */
+.p-operadores{margin-top:14px;padding-top:14px;border-top:1px solid var(--borde);animation:entra .35s ease}
+.p-operadores p{font-size:.88rem;color:var(--suave);margin-bottom:10px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.op{display:flex;align-items:center;gap:10px;padding:12px;border-radius:14px;cursor:pointer;font:600 .98rem var(--fuente);color:var(--humo);
+  background:rgba(255,255,255,.03);border:1px solid var(--borde);transition:all .3s ease}
+.op:hover{border-color:var(--neon);box-shadow:var(--glow);background:rgba(37,211,102,.1)}
+.op:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+.op i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:700;background:linear-gradient(135deg,var(--neon),var(--neon-osc));color:#03140c}
+
+/* Mensaje de éxito cuando todo está resuelto */
+.banner-ok{display:flex;flex-direction:column;gap:4px;text-align:center;padding:18px;border-radius:16px;margin-bottom:12px;
+  background:rgba(37,211,102,.1);border:1px solid var(--neon);box-shadow:var(--glow);animation:entra .45s ease}
+.banner-ok span{font-size:.85rem;color:var(--suave)}
+
+/* Celulares pequeños: el botón de cada problema ocupa todo el ancho */
+@media(max-width:460px){.btn-mini{width:100%;padding:13px}}

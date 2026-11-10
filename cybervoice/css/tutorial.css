@@ -1,0 +1,32 @@
+/* ==========================================================
+   tutorial.css - Pantalla de tutorial guiado con dos opciones
+   ========================================================== */
+
+/* Botón para volver al plan */
+.atras{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:8px 12px 8px 6px;margin:-6px 0 14px -6px;border-radius:12px;
+  background:none;border:0;color:var(--suave);font:500 .92rem var(--fuente);cursor:pointer;transition:all .3s ease}
+.atras:hover{color:var(--neon);background:rgba(37,211,102,.08)}
+.atras:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
+.atras svg{width:20px;height:20px}
+
+/* Pestañas: Opción A / Opción B como botones grandes */
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.tab{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px;border-radius:16px;cursor:pointer;text-align:left;
+  font:600 .95rem var(--fuente);line-height:1.3;color:var(--suave);background:rgba(255,255,255,.03);border:1px solid var(--borde);transition:all .3s ease}
+.tab small{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--neon-osc)}
+.tab:hover{border-color:var(--borde-fuerte);color:var(--humo)}
+.tab:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+.tab[aria-selected="true"]{color:var(--humo);border-color:var(--neon);background:rgba(37,211,102,.12);box-shadow:var(--glow)}
+.tab[aria-selected="true"] small{color:var(--neon)}
+
+/* Pasos numerados */
+.pasos{list-style:none;padding:0;counter-reset:p;display:grid;gap:10px;animation:entra .35s ease}
+.paso{counter-increment:p;display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:14px;line-height:1.55;font-size:.93rem;
+  background:rgba(255,255,255,.04);border:1px solid var(--borde)}
+.paso::before{content:counter(p);flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  font-weight:700;font-size:.9rem;background:var(--neon);color:#03140c;box-shadow:0 0 14px rgba(37,211,102,.5)}
+.paso > span{flex:1;min-width:0;padding-top:3px}
+.nota-menu{margin-top:14px;font-size:.78rem;line-height:1.5;color:var(--suave);opacity:.85}
+
+/* Celulares pequeños: las opciones se apilan */
+@media(max-width:420px){.tabs{grid-template-columns:1fr}}

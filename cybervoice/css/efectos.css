@@ -1,0 +1,37 @@
+/* ==========================================================
+   efectos.css - Carga, felicitación, confeti, responsive y accesibilidad
+   ========================================================== */
+
+/* Capa de carga (spinner) */
+.carga{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:5;
+  background:rgba(2,18,13,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--suave);font-size:.95rem}
+.carga.on{display:flex}
+.spinner{width:44px;height:44px;border-radius:50%;border:3px solid rgba(255,255,255,.1);border-top-color:var(--neon);animation:giro .9s linear infinite;box-shadow:0 0 18px rgba(37,211,102,.4)}
+@keyframes giro{to{transform:rotate(360deg)}}
+
+/* Aviso flotante (puntos restados y felicitación final) */
+.toast{position:fixed;left:50%;bottom:max(28px,env(safe-area-inset-bottom));z-index:60;
+  transform:translate(-50%,30px);opacity:0;pointer-events:none;
+  padding:16px 26px;border-radius:50px;font-weight:600;text-align:center;color:#03140c;
+  background:linear-gradient(135deg,var(--neon),#5cf09a);box-shadow:0 0 36px rgba(37,211,102,.6);
+  transition:all .45s cubic-bezier(.2,.8,.2,1);max-width:calc(100vw - 32px)}
+.toast.on{transform:translate(-50%,0);opacity:1}
+
+/* Confeti verde (las partículas se crean desde js/efectos.js) */
+.confeti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:40}
+.confeti span{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px;opacity:.95;animation:cae linear forwards}
+@keyframes cae{to{transform:translate(var(--dx),110vh) rotate(var(--rot))}}
+
+/* Responsive: laptop/tablet y celulares pequeños */
+@media(min-width:768px){body{padding:32px}.app{padding:38px 36px;min-height:720px}}
+@media(max-width:380px){
+  .app{padding:24px 18px;border-radius:20px}
+  .ops{grid-template-columns:1fr}
+}
+
+/* Accesibilidad: reduce animaciones si el usuario lo pide */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition:none!important}
+  .spinner{animation-duration:1.6s!important}
+  .app.pulso{animation:none;border-color:rgba(255,107,122,.7)}
+}
